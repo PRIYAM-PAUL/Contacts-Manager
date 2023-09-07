@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<script
+			src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js"
+			referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector : '#description_field'
+			});
+		</script>
+		<script> $(document).ready(()=> {
+				$(".item").removeClass("active");
+				$("#add-link").addClass("active");
+			});
+			</script>
+		<div class="wrapper fadeInDown " style="margin-left:30px" id="formContentaddcontact">
+				<div class="container  form-class ">
+					<div class="row">
+						<div class="col-md-6 offset-md-3">
+							<div class="myclass">
+
+								<h3 class="text-center mt-5" th:text="${heading}">ADD
+									CONTACTS</h3>
+							</div>
+							<form th:action="@{/user/contactadded}"
+								enctype="multipart/form-data" method="post"
+								th:object="${contact}">
+								<div class="form-group">
+									<input type="hidden" name="cid" th:value="${contact.cid}" /> <input
+										type="hidden" name="updateForm" th:value="${updateForm}" /> <i
+										class="fa-solid fa-user-plus fa-xl"></i><input type="text"
+										class="form-control" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="Enter UserName"
+										name="name" th:value="${contact.name}" required="required"
+										th:classappend="${#fields.hasErrors('name') ? 'is-invalid' :''}">
+									<div class="invalid-feedback"
+										th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+								</div>
+								<div class="form-group">
+									<i class="fa-solid fa-file-signature fa-xl"></i><input
+										type="text" class="form-control" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="Enter NickName"
+										name="nickName" th:value="${contact.nickName}">
+								</div>
+								<div class="form-group">
+									<i class="fa-solid fa-envelope-open-text fa-xl"></i><input
+										type="email" class="form-control" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="Enter Email "
+										name="email" th:value="${contact.email}"
+										th:classappend="${#fields.hasErrors('email') ? 'is-invalid' :''}">
+									<div class="invalid-feedback"
+										th:each="e : ${#fields.errors('email')}" th:text="${e}"></div>
+								</div>
+								<div class="form-group">
+									<i class="fa-solid fa-phone fa-xl"></i><input type="tel"
+										class="form-control" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="Enter Phone Number"
+										name="phoneNo" required="required"
+										th:value="${contact.phoneNo}"
+										th:classappend="${#fields.hasErrors('phoneNo') ?'is-invalid':''}">
+									<div class="invalid-feedback"
+										th:each="e :${ #fields.errors('phoneNo')}" th:text="${e}"></div>
+
+								</div>
+								<div class="form-group">
+									<i class="fa-solid fa-briefcase fa-xl"></i><input type="text"
+										class="form-control" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="Enter Work"
+										name="work" th:value="${contact.work}">
+								</div>
+								<div style="margin-bottom: 10px">Description</div>
+								<div class="form-group">
+									<textarea class="textArea textAreainput" name="description"
+										id="description_field" th:text="${contact.description}"
+										rows="10" placeholder="Enter About YourSelf"></textarea>
+								</div>
+								<div class="form-group text-center">
+									<input type="file" style="border: none;" class="form-control "
+										id="exampleInputEmail1" aria-describedby="emailHelp"
+										name="imageUrl" th:value="${contact.imageUrl}">
+								</div>
+								<input type="hidden" name="image" th:value="${contact.imageUrl}" />
+								<div class="text-center" style="margin-bottom: 20px">
+									<button type="submit" class="btn bg-primary btn-primary"
+										th:text="${button}">Add Contact</button>
+									<button type="reset" class="btn btn-warning">Reset</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+</body>
+</html>

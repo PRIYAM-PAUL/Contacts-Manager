@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+
+</head>
+<body>
+	<section>
+		<div class="wrapper fadeInDown">
+			<div id="formContent">
+				<!-- Tabs Titles -->
+
+				<!-- Icon -->
+				<div class="fadeIn first">
+					<h3 style="margin-top: 20px">Smart Contact Manager</h3>
+
+
+
+					<!-- Login Form -->
+					<form method="post" th:action="@{/otpVerify}">
+					<input type="hidden" th:value="${otp}" name="dataOtp">
+						<input type="text" id="username" class="fadeIn second"
+							name="email" th:value="${email}" placeholder="Email Address"> 
+							<input type="text" id="username" class="fadeIn second"
+							name="otp"  placeholder="OTP">
+							<input
+							type="submit" class="fadeIn fourth " style="color: white"
+							value="Verify OTP">
+					</form>
+
+					<!-- Remind Passowrd -->
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

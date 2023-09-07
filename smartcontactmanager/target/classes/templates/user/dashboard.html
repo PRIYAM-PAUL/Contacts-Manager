@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<div class="wrapper fadeInDown ">
+			<div class="container form-control ">
+				<div class="col md-6 offset-3 m-3">
+					<script> $(document).ready(()=> {
+				$(".item").removeClass("active");
+				$("#dashboard-link").addClass("active");
+			});
+			</script>
+					<div>
+						<h4 class="heading text-center" >Smart Contact Manager</h4>
+					</div>
+					<h5 class="time" th:text="${date_time}">
+					</h5>
+					<div class="text-center" 
+						style="position: relative;margin-top:100px !important; height: 500px;">
+						<img alt="profile_img" th:src="@{/images/default.png}">
+						<h2 class="display-4 d-none d-sm-block">
+							Welcome Back <span th:text="${user.name}"></span>
+						</h2>
+						<p class="lead d-none d-sm-block">
+							You have stored <span
+								style="text-shadow: black; font-weight: bold;"
+								th:text="${contactNum}"> </span> contact in your database! <br>
+							Please give us feedback and response of our service !!
+						</p>
+						<div style="left:50%;right:50%;">
+							<footer class="mb-1 fadeIn four">
+									<span><input type="submit" onclick="payementStart()" class="donate" style="left: 35%;"value="Donate Us" >
+										<input type="text" id="paymentBar" style= "right: 40%;position:fixed; width:10%; bottom:0 ;margin-bottom:40px ! important;padding:13px !important;height:50px;" ></span>
+							</footer>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

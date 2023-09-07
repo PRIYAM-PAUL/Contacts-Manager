@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<div class="wrapper fadeInDown ">
+			<div class="container form-control ">
+				<div class="col md-6 offset-3 m-3">
+					<script> $(document).ready(()=> {
+				$(".item").removeClass("active");
+				$("#setting-link").addClass("active");
+			});
+		
+					
+						function visible1() {
+						  var x = document.getElementById("myInput1");
+						  if (x.type === "password") {
+						    x.type = "text";
+						  } else {
+						    x.type = "password";
+						  }
+						}
+		function visible2() {
+			  var x = document.getElementById("myInput2");
+			  if (x.type === "password") {
+			    x.type = "text";
+			  } else {
+			    x.type = "password";
+			  }
+			}
+	
+			</script>
+					<h2>Setting</h2>
+					<h4 class="  m-4">Change Password</h4>
+
+					<form method="post" id="my-form"
+						th:action="@{/user/changePassword}">
+						<input type="password" placeholder="Enter Old Password"
+							name="oldPassword" th:value="${oldPassword}" id="myInput1" /><i
+							class="fa-solid fa-eye" onclick="visible1()"></i> <input
+							type="password" placeholder="Enter New Password"
+							name="newPassword" th:value="${newPassword}" id="myInput2" /><i
+							class="fa-solid fa-eye" onclick="visible2()"></i> 
+						<div class="" style="position: relative; margin: 10px; left: 36%;">
+							<button type="submit" class="btn btn-success mr-1">Change</button>
+							<button type="reset" class="btn btn-warning">Reset</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

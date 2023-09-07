@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+		 th:replace="base::layout(~{::section})" 
+		>
+<head>
+	<meta charset="UTF-8" />
+	
+</head>
+<body>
+<section>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+<h3 style="margin-top:20px">Smart Contact Manager</h3>
+
+    </div>
+    <div th:if="${param.error}" class="alert alert-danger"> 
+    Invalid Username or Password</div>
+
+  <div th:if="${param.logout}" class="alert alert-danger"> 
+    You have been logout</div>
+
+    <!-- Login Form -->
+    <form method="post" th:action="@{/login}">
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="Email Address">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="submit" class="fadeIn fourth " style="color:white" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover " th:href="@{/forget}"  href="#">Forgot Password?</a>
+    </div>
+ 
+  </div>
+</div>
+</section>
+</body>
+</html>
